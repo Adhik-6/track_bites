@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/TrainDetails.css";
+import "../styles/trainDetails.css";
 import useGlobalStore from "../stores/global.stores";
 import logo from "./../assets/logo.jpg"; 
 
