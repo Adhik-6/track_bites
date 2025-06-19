@@ -1,0 +1,94 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #3498db, #2c3e50);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  max-width: 700px;
+  width: 90%;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.category {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.category h3 {
+  color: #2980b9;
+  margin-bottom: 10px;
+}
+
+.items label {
+  display: block;
+  background: #ecf0f1;
+  margin: 5px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.items label:hover {
+  background: #d0e6f7;
+}
+
+.items input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.summary {
+  text-align: left;
+  margin-top: 20px;
+  background: #f1f1f1;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.summary ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-buttons button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-buttons button:hover {
+  background-color: #2980b9;
+}

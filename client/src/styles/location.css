@@ -1,0 +1,67 @@
+
+.header h2 {
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.zones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.station-box {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.station-box:hover {
+  background-color: #eef6fc;
+}
+
+.station-box.selected {
+  border: 2px solid #3498db;
+  background-color: #ecf6fb;
+  font-weight: 600;
+  color: #3498db;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    width: 48%;
+    font-size: 0.9rem;
+  }
+}
