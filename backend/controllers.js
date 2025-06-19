@@ -45,13 +45,14 @@ const signup = async (req, res) => {
 };
 
 const forgetPassword = async (req, res) => {
+  const frontendUrl = process.env.NODE_ENV === "production" ? process.env.FRONTEND_URL : process.env.FRONTEND_URL_DEV;
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "15m" });
-    const resetLink = `http://localhost:5173/reset-password?token=${token}`;
+    const resetLink = `${frontendUrl}/reset-password?token=${token}`;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
