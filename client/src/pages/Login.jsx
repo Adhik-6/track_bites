@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./../styles/login.css"; // Assume you have a CSS file for styles
-import axios from "axios"; // If you need to make API calls
+import axiosInstance from "./../utils/axiosInstance.utils.js"; // If you need to make API calls
 import toast from "react-hot-toast";
 import useGlobalStore from "../stores/global.stores";
 import logo from "./../assets/logo.jpg"; 
@@ -24,7 +24,7 @@ export default function Login() {
     e.preventDefault();
     
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/login", { email, password });
+      const res = await axiosInstance.post("/auth/login", { email, password });
       if (res.data) {
         setUser(res.data?.user);
         setToken(res.data?.token);
@@ -45,7 +45,7 @@ export default function Login() {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/forgot-password", { email });
+      const res = await axiosInstance.post("/auth/forgot-password", { email });
       if (res.data) {
         toast.success("Password reset link sent to your email");
       } else {

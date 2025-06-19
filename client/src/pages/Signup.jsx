@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/signup.css";
 import toast from "react-hot-toast";
-import axios from "axios"; // If you need to make API calls
+import axiosInstance from "./../utils/axiosInstance.utils.js"; // If you need to make API calls
 import useGlobalStore from "../stores/global.stores";
 import logo from "./../assets/logo.jpg"; 
 
@@ -27,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
     
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/signup", { form });
+      const res = await axiosInstance.post("/auth/signup", { form });
       if (res.data) {
         setUser(res.data?.user);
         setToken(res.data?.token);

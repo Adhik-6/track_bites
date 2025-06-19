@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import "./../styles/forgotPassword.css"; // Optional: if you have a CSS file
-import axios from "axios";
+import axiosInstance from "./../utils/axiosInstance.utils.js";
 import toast from "react-hot-toast";
 import logo from "./../assets/logo.jpg"; 
 
@@ -31,7 +31,7 @@ export default function ForgotPassword() {
       return;
     }
     try{
-      const res = await axios.post("http://localhost:8000/api/auth/reset-password", { newPassword: newPass, token });
+      const res = await axiosInstance.post("/auth/reset-password", { newPassword: newPass, token });
       if (res.data) {
         toast.success("Password reset successful");
         navigate("/");

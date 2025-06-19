@@ -8,10 +8,12 @@ import { login, logout, signup, forgetPassword, resetPassword, bookOrder, sendSm
 const app = express();
 dotenv.config();
 
+const frontendUrl = process.env.NODE_ENV === "production" ? process.env.FRONTEND_URL : process.env.FRONTEND_URL_DEV;
+
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: frontendUrl,
     credentials: true,
     methods: "GET, POST, PATCH",
   })

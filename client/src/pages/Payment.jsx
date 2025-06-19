@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/payment.css";
-import axios from "axios"; // Ensure axios is installed and imported
+import axiosInstance from "./../utils/axiosInstance.utils.js"; // Ensure axios is installed and imported
 import useGlobalStore from "../stores/global.stores"; // Import your global store if needed
 import toast from "react-hot-toast";
 import logo from "./../assets/logo.jpg"; 
@@ -19,7 +19,7 @@ const Payment = () => {
   };
 
   const loadRazorpay = async () => {
-    const orderRes = await axios.post("http://localhost:8000/api/payment/book", {
+    const orderRes = await axiosInstance.post("/payment/book", {
       amount: 500, // INR ₹5.00
     }, {
       headers: {
@@ -37,8 +37,8 @@ const Payment = () => {
       handler: async function (response) {
         try {
           // Attempt to send SMS but don't let it block navigation
-          const res = await axios.post(
-            "http://localhost:8000/api/payment/send-sms",
+          const res = await axiosInstance.post(
+            "/payment/send-sms",
             { paymentResponse: response, number: userData.phone },
             {
               headers: {
