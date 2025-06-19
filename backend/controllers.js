@@ -46,6 +46,7 @@ const signup = async (req, res) => {
 
 const forgetPassword = async (req, res) => {
   const frontendUrl = process.env.NODE_ENV === "production" ? process.env.FRONTEND_URL : process.env.FRONTEND_URL_DEV;
+  console.log("Frontend URL:", frontendUrl);
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
