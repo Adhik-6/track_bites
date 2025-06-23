@@ -51,18 +51,20 @@ const forgetPassword = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "15m" });
     const resetLink = `${frontendUrl}/reset-password?token=${token}`;
 
-    const res = await sendMail({
+    const mailRes = await sendMail({
       email,
       subject: "Password Reset",
       html: `<p>Click <a href="${resetLink}">here</a> to reset your password. This link expires in 15 minutes.</p>`,
     });
+    // console.log("Email res:", mailRes);
 
-    if (res.success) {
+    if (mailRes.success) {
       return res.json({ message: "Password reset link sent to email" });
     } else {
-      throw new Error(res.message);
+      throw new Error(mailRes.message);
     }
   } catch (err) {
+    console.error("Error sending password reset link:", err);
     return res.status(500).json({ message: "Error sending password reset link" });
   }
 };

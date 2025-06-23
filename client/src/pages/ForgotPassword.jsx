@@ -16,7 +16,7 @@ export default function ForgotPassword() {
   const queryParams = new URLSearchParams(location.search);
 
   const token = queryParams.get("token");
-  console.log("Token:", token); 
+  // console.log("Token:", token); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +30,7 @@ export default function ForgotPassword() {
       alert("Invalid token");
       return;
     }
+    
     try{
       const res = await axiosInstance.post("/auth/reset-password", { newPassword: newPass, token });
       if (res.data) {
