@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { login, logout, signup, forgetPassword, resetPassword, bookOrder, sendSms, verifyToken } from "./controllers.js";
-
+import { authRouter, bookingRouter } from "./routes/index.routes.js";
+import { errorHandler } from "./middlewares/index.middlewares.js";
 
 const app = express();
 dotenv.config();
@@ -23,13 +23,11 @@ app.get("/", (req, res) => {
   res.send("This is Home Page");
 });
 
-app.post("/api/auth/login", login);
-app.post("/api/auth/logout", verifyToken, logout);
-app.post("/api/auth/signup", signup);
-app.post("/api/auth/forgot-password", forgetPassword);
-app.post("/api/auth/reset-password", resetPassword);
-app.post("/api/payment/book", verifyToken, bookOrder);
-app.post("/api/payment/send-sms", verifyToken, sendSms);
+app.use("/api/auth", authRouter);
+app.use("/api/payment", bookingRouter);
+
+
+app.use(errorHandler);
 
 const startBackend = async () => {
   try {

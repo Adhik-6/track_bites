@@ -39,7 +39,7 @@ const Payment = () => {
           // Attempt to send SMS but don't let it block navigation
           const res = await axiosInstance.post(
             "/payment/send-sms",
-            { paymentResponse: response, number: userData.phone },
+            { paymentResponse: response, number: userData.phone, email: userData.email },
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -47,11 +47,12 @@ const Payment = () => {
             }
           );
           navigate("/order-confirmation");
-          console.log("SMS sending initiated.");
         } catch (error) {
           console.error("Failed to send SMS:", error);
           // Optionally, you can show a non-blocking toast message
           toast.error("Could not send order confirmation SMS.");
+        } finally {
+          toast.success("Order placed successfully!"); // Show success toast regardless of SMS status
         }
         // Attempt to show the toast, but don't let it crash the app
         try {
